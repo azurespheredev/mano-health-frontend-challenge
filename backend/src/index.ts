@@ -1,12 +1,12 @@
 import { serve } from "@hono/node-server";
-import { Hono } from "hono";
+import { Hono, type Context } from "hono";
 import { cors } from "hono/cors";
 import MRFController from "~/controllers/MRFController";
 
 const app = new Hono();
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
+app.get("/", (context: Context) => {
+  return context.text("Hello Hono!");
 });
 
 // Allow CORS

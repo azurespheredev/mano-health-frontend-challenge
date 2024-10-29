@@ -8,6 +8,7 @@ import type { MRFRow } from "~/types/mrfTypes";
 import { ENTITY_NAME, MESSAGES } from "~/utils/constants";
 import { MRFReportStatus } from "~/utils/enums";
 import { getCurrentTimestamp, parseTimestampString } from "~/utils/helpers";
+import { claimsArrayValidationSchema } from "~/utils/validations";
 
 // Convert `import.meta.url` to a file path
 const __filename = fileURLToPath(import.meta.url);
@@ -18,6 +19,17 @@ export default class MRFController {
   static async generateMRF(context: Context) {
     try {
       const { claims } = await context.req.json();
+
+      try {
+        claimsArrayValidationSchema.parse(claims);
+      } catch (error) {
+        console.log(error);
+        return context.json<MRFResponse>({
+          success: false,
+          message: MESSAGES.VALIDATION_ERROR,
+          error: JSON.stringify(error),
+        }, 400);
+      }
 
       const convertedMRF = convertClaimsToMRF(claims);
       const mrfJSON = JSON.stringify(convertedMRF, null, 2);
