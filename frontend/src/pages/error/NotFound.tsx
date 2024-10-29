@@ -1,4 +1,6 @@
-export default function NotFoundPage() {
+import React from "react";
+
+const NotFoundPage: React.FC = () => {
   return (
     <div className="h-screen">
       <div className="flex items-center justify-center h-full gap-4">
@@ -8,4 +10,6 @@ export default function NotFoundPage() {
       </div>
     </div>
   );
-}
+};
+
+export default NotFoundPage;
