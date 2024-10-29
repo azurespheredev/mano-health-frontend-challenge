@@ -31,6 +31,11 @@ export const ALERTS = {
     title: "Success",
     message: "Selected rows deleted successfully!"
   },
+  EMPTY_CSV_FILE: {
+    status: AlertStatus.ERROR,
+    title: "Empty CSV File",
+    message: "The uploaded CSV file is empty. Please upload a valid CSV file."
+  },
   NOT_CSV_FILE: {
     status: AlertStatus.ERROR,
     title: "Invalid File Type",
@@ -50,5 +55,5 @@ export const ALERTS = {
     status: AlertStatus.WARNING,
     title: "",
     message: "Some of these files are very large so download at your own risk."
-  }
+  },
 }

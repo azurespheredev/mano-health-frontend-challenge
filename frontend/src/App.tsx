@@ -1,11 +1,14 @@
 import { createTheme, MantineProvider } from "@mantine/core";
 import { RouterProvider } from "react-router-dom";
-import router from "./routes";
+import router from "~/routes";
+import { StoreProvider } from "~/stores/StoreProvider";
 
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      <RouterProvider router={router} />
+      <StoreProvider>
+        <RouterProvider router={router} />
+      </StoreProvider>
     </MantineProvider>
   );
 }

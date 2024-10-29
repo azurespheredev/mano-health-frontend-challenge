@@ -2,8 +2,8 @@ import { Button, Loader, Text } from "@mantine/core";
 import { IconCircleCheck } from "@tabler/icons-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MRFResponse } from "shared/src/types/apiTypes";
-import { Claim } from "shared/src/types/claimsTypes";
+import type { MRFResponse } from "shared/src/types/apiTypes";
+import type { Claim } from "shared/src/types/claimsTypes";
 import axiosService from "~/services/axiosService";
 import { useStores } from "~/stores/useStores";
 import { ALERTS, CONTENT } from "~/utils/constants";
@@ -30,10 +30,7 @@ const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }: S
         });
       }
     } catch (error) {
-      alertStore.showAlert({
-        ...ALERTS.SERVER_ERROR,
-        title: error?.response?.data?.message || ALERTS.SERVER_ERROR.title
-      });
+      alertStore.showAlert(ALERTS.SERVER_ERROR, error?.response?.data?.message);
     }
   }, [alertStore, claimsData]);
 

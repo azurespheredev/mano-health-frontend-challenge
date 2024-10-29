@@ -18,15 +18,15 @@ interface Step1UploadClaimsProps {
   handleNextStep: () => void;
 }
 
+const maxFileSize: number = 1024 * 1024 * 5; // 5MB
+const acceptedMimeTypes: string[] = ["text/csv"];
+
 const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
   selectedFile,
   onFileChange,
   onParsedDataChange,
   handleNextStep,
-}: Step1UploadClaimsProps) => {
-  const maxFileSize: number = 1024 * 1024 * 5; // 5MB
-  const acceptedMimeTypes: string[] = ["text/csv"];
-
+}) => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const { alertStore } = useStores();
 
@@ -44,15 +44,22 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
     setLoading(true);
 
     const reader = new FileReader();
-    reader.onload = async (event) => {
-      const csvData = event.target?.result as string;
+    reader.onload = (event) => {
+      const csvData: string = event.target?.result as string;
 
       Papa.parse(csvData, {
         header: true,
         skipEmptyLines: true,
-        complete: async (result: PapaparseResult) => {
+        worker: true, // Parse CSV in separate thread
+        complete: (result: PapaparseResult) => {
           if (result.errors.length > 0) {
             alertStore.showAlert(ALERTS.PAPAPARSE_ERROR);
+            setLoading(false);
+            return;
+          }
+
+          if (result.data.length === 0) {
+            alertStore.showAlert(ALERTS.EMPTY_CSV_FILE);
             setLoading(false);
             return;
           }
@@ -101,7 +108,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
         maxSize={maxFileSize}
         accept={acceptedMimeTypes}
       >
-        <Group justify="center" gap="xs" className="pointer-events-none w-full md:w-96 min-h-48">
+        <Group justify="center" gap="xs" className="flex justify-center pointer-events-none w-full md:w-96 min-h-48">
           <Dropzone.Accept>
             <IconFileCheck className="w-16 h-16 text-green-400" />
           </Dropzone.Accept>

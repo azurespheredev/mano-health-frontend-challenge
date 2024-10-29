@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to={"/claims"} />,
+        element: <Navigate to={"/mrf-list"} />,
       },
       {
         path: "/claims",
