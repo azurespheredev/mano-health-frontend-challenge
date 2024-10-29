@@ -64,7 +64,7 @@ const ClaimsPage: React.FC = observer(() => {
         </Stepper.Step>
       ))}
       <Stepper.Completed>
-        <Step3ProcessClaims />
+        <Step3ProcessClaims claimsData={parsedData} />
       </Stepper.Completed>
     </Stepper>
   );

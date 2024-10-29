@@ -14,17 +14,18 @@
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
+    /* Paths */
     "paths": {
       "~/*": [
         "src/*"
-      ],
+      ]
     }
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "node_modules",
     "dist"
-  ],
+  ]
 }

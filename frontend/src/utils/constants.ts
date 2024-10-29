@@ -11,6 +11,8 @@ export const CONTENT = {
   FILE_SELECTED: "File uploaded!",
   NO_ROWS_TO_DISPLAY: "There are no rows to display.",
   SHOULD_NOT_EXCEED: "Attach a single CSV file, it should not exceed 5MB.",
+  CONVERSION_PENDING: "Converting Claims to MRF Data...",
+  CONVERSION_SUCCESSFUL: "Successfully converted claims to MRF Data!",
 }
 
 export const ALERTS = {
