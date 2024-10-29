@@ -3,10 +3,10 @@ import type { Context } from "hono";
 import path from "path";
 import { fileURLToPath } from "url";
 import { convertClaimsToMRF } from "~/services/mrfService";
-import type { MRFResponse } from "~/types/apiTypes";
-import type { MRFRow } from "~/types/mrfTypes";
+import type { MRFResponse } from "@shared/types/apiTypes";
+import type { MRFEntity } from "@shared/types/mrfTypes";
 import { ENTITY_NAME, MESSAGES } from "~/utils/constants";
-import { MRFReportStatus } from "~/utils/enums";
+import { MRFReportStatus } from "@shared/utils/enums";
 import { getCurrentTimestamp, parseTimestampString } from "~/utils/helpers";
 import { claimsArrayValidationSchema } from "~/utils/validations";
 
@@ -56,7 +56,7 @@ export default class MRFController {
       // Retrieve file names from the directory
       const files: string[] = await fs.readdir(jsonFilesDir);
 
-      const fileList: MRFRow[] = files
+      const fileList: MRFEntity[] = files
         .filter((file: string) => file.endsWith(".json"))
         .map((file: string) => {
           const [entity, dateStr] = file.replace(".json", "").split("_");

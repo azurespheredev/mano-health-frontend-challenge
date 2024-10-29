@@ -1,4 +1,4 @@
-import type { BillingClass, BillingCodeType, MRFReportStatus, ReportingEntityType, } from "~/utils/enums";
+import type { BillingClass, BillingCodeType, MRFReportStatus, ReportingEntityType, } from "../utils/enums";
 
 export interface Provider {
   billed_charge: number;
@@ -34,7 +34,7 @@ export interface OutOfNetworkAllowedAmountFile {
   version: string;
 }
 
-export interface MRFRow {
+export interface MRFEntity {
   entity: string;
   status: MRFReportStatus;
   createdAt: Date;

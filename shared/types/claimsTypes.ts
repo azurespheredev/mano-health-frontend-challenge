@@ -26,3 +26,15 @@ export interface Claim {
   providerId: string;
   providerName: string;
 }
+
+export interface PapaparseResult {
+  data: Record<string, string>[];
+  errors: unknown[];
+  meta: {
+    delimiter: string;
+    linebreak: string;
+    aborted: boolean;
+    truncated: boolean;
+    fields: string[];
+  };
+}

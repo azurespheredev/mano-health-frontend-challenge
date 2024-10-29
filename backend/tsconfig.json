@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "../",
     "types": [
       "node"
     ],
@@ -20,6 +20,9 @@
       "~/*": [
         "src/*"
       ],
+      "@shared/*": [
+        "../shared/*"
+      ]
     }
   },
   "include": [
