@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import MRFController from "@/controllers/MRFController";
+import MRFController from "~/controllers/MRFController";
 
 const app = new Hono();
 

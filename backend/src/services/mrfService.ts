@@ -1,13 +1,13 @@
-import type { Claim } from "@/types/claimsTypes";
-import type { AllowedAmounts, OutOfNetworkAllowedAmountFile, OutOfNetworkObject } from "@/types/MRFTypes";
-import { ENTITY_NAME } from "@/utils/constants";
-import { BillingClass, ReportingEntityType } from "@/utils/enums";
+import type { Claim } from "~/types/claimsTypes";
+import type { AllowedAmounts, OutOfNetworkAllowedAmountFile, OutOfNetworkObject } from "~/types/mrfTypes";
+import { ENTITY_NAME } from "~/utils/constants";
+import { BillingClass, ReportingEntityType } from "~/utils/enums";
 import {
   getProcedureDescription,
   mapClaimTypeToBillingClass,
   mapPlaceOfServiceToServiceCode,
   mapProcedureCodeToBillingCodeType
-} from "@/utils/helpers";
+} from "~/utils/helpers";
 
 export function convertClaimsToMRF(
   claimsData: Claim[]
