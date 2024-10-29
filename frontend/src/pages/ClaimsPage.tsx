@@ -46,7 +46,12 @@ const ClaimsPage: React.FC = observer(() => {
       label: "Review",
       description: "Revision of Parsed Claims",
       component: (
-        <Step2ReviewClaims />
+        <Step2ReviewClaims
+          claimsData={parsedData}
+          onChangeClaimsData={setParsedData}
+          handleNextStep={handleNextStep}
+          handlePrevStep={handlePrevStep}
+        />
       ),
     },
   ];
