@@ -2,11 +2,17 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "declaration": true,
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "lib": [
-      "es2017"
-    ]
+      "ES2020"
+    ],
+  },
+  "paths": {
+    "~/*": [
+      "src/*"
+    ],
   },
   "include": [
     "**/*.ts"

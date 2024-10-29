@@ -1,7 +1,7 @@
 import { Stepper } from "@mantine/core";
 import React from "react";
 import { observer } from "mobx-react-lite";
-import { Claim } from "@shared/src/types/claimsTypes";
+import { Claim } from "shared/src/types/claimsTypes";
 import Step1UploadClaims from "~/components/claims/Step1UploadClaims";
 import Step2ReviewClaims from "~/components/claims/Step2ReviewClaims";
 import Step3ProcessClaims from "~/components/claims/Step3ProcessClaims";

@@ -29,12 +29,6 @@
       "~/*": [
         "src/*"
       ],
-      "@shared/*": [
-        "../shared/*"
-      ],
-      "@rules/*": [
-        "../rules/src/*"
-      ]
     }
   },
   "include": [

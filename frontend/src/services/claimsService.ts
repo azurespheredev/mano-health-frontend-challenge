@@ -1,4 +1,4 @@
-import type { Claim } from "@shared/src/types/claimsTypes";
+import type { Claim } from "shared/src/types/claimsTypes";
 import { toCamel } from "~/utils/helpers";
 
 export function convertToClaim(obj: Record<string, string>): Claim {
