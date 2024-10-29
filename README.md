@@ -19,49 +19,55 @@ To run the project, please make sure you have:
 ### Installation
 
 1. **Clone the Repository**
-    ```bash
-    git clone https://github.com/blitzsprinter/mano-health-frontend-challenge.git
-    cd mano-health-frontend-challenge
-    ```
+
+   ```bash
+   git clone https://github.com/blitzsprinter/mano-health-frontend-challenge.git
+   cd mano-health-frontend-challenge
+   ```
 
 2. **Install Dependencies**
-   
+
    Execute the following command to install all necessary dependencies:
-    ```bash
-    npm run postinstall
-    ```
+
+   ```bash
+   npm run postinstall
+   ```
 
 3. **Start the Backend Server**
 
    Run the backend server in development mode by running:
-    ```bash
-    npm run backend:dev
-    ```
+
+   ```bash
+   npm run backend:dev
+   ```
 
 4. **Launch the Frontend Application**
 
    Start the React frontend application in development mode:
-    ```bash
-    npm run frontend:dev
-    ```
+
+   ```bash
+   npm run frontend:dev
+   ```
 
 5. **Build the React Application for Production**
 
    To build an optimized production version of the React app, use:
-    ```bash
-    npm run frontend:build
-    ```
+
+   ```bash
+   npm run frontend:build
+   ```
 
 ## 🧪 Testing & Code Quality
 
 1. **Run Linter**
    Analyze the codebase for potential issues:
-    ```bash
-    npm run lint
-    ```
+
+   ```bash
+   npm run lint
+   ```
 
 2. **Format Codebase with Prettier**
    Format the codebase according to Prettier style guidelines:
-    ```bash
-    npm run format
-    ```
+   ```bash
+   npm run format
+   ```

@@ -26,11 +26,11 @@ const Step2ReviewClaims: React.FC<Step2ReviewClaimsProps> = ({ claimsData, onCha
       <AgGridTable data={claimsData} onChangeData={onChangeClaimsData} editable={true} />
 
       <Group justify="center">
-        <Button size="md" className="min-w-40 mb-4 md:mb-0" onClick={handleNextStep}>
+        <Button size="md" className="min-w-40 mb-4 md:mb-0" onClick={handleNextStep} disabled={claimsData.length === 0}>
           {"Approve"}
         </Button>
 
-        <Button size="md" color="red" className="min-w-40 mb-4 md:mb-0" onClick={handlePrevStep}>
+        <Button size="md" color="red" className="min-w-40 mb-4 md:mb-0" onClick={handlePrevStep} disabled={claimsData.length === 0}>
           {"Decline"}
         </Button>
       </Group>
