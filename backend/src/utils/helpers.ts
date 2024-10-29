@@ -40,3 +40,20 @@ export function getProcedureDescription(procedureCode: string): string {
   // In a real project, this would look up the description. Here, return the procedure code as the description
   return procedureCode;
 }
+
+export function getCurrentTimestamp(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+
+  return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+};
+
+export function parseTimestampString(timestamp: string): Date {
+  const [year, month, day, hours, minutes, seconds] = timestamp.split("-").map(Number);
+  return new Date(year, month - 1, day, hours, minutes, seconds);
+}
