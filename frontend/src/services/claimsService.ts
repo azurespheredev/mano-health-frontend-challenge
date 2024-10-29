@@ -35,5 +35,5 @@ export function convertToClaim(obj: Record<string, string>): Claim {
     memberGender: convertedObj.memberGender,
     providerId: convertedObj.providerID,
     providerName: convertedObj.providerName,
-  }
+  };
 }

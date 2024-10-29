@@ -24,11 +24,14 @@ export default class MRFController {
         claimsArrayValidationSchema.parse(claims);
       } catch (error) {
         console.log(error);
-        return context.json<MRFResponse>({
-          success: false,
-          message: MESSAGES.VALIDATION_ERROR,
-          error: JSON.stringify(error),
-        }, 400);
+        return context.json<MRFResponse>(
+          {
+            success: false,
+            message: MESSAGES.VALIDATION_ERROR,
+            error: JSON.stringify(error),
+          },
+          400
+        );
       }
 
       const convertedMRF = convertClaimsToMRF(claims);
@@ -38,16 +41,22 @@ export default class MRFController {
       // Save as a new JSON file
       await fs.writeFile(filePath, mrfJSON, "utf8");
 
-      return context.json<MRFResponse>({
-        success: true,
-        data: convertedMRF,
-      }, 200);
+      return context.json<MRFResponse>(
+        {
+          success: true,
+          data: convertedMRF,
+        },
+        200
+      );
     } catch (error) {
-      return context.json<MRFResponse>({
-        success: false,
-        message: MESSAGES.GENERATE_MRF_ERROR,
-        error: JSON.stringify(error),
-      }, 500);
+      return context.json<MRFResponse>(
+        {
+          success: false,
+          message: MESSAGES.GENERATE_MRF_ERROR,
+          error: JSON.stringify(error),
+        },
+        500
+      );
     }
   }
 
@@ -66,20 +75,26 @@ export default class MRFController {
             entity: entity,
             status: MRFReportStatus.OUT_NETWORK,
             createdAt,
-            filename: file
+            filename: file,
           };
         });
 
-      return context.json<MRFResponse>({
-        success: true,
-        data: fileList
-      }, 200);
+      return context.json<MRFResponse>(
+        {
+          success: true,
+          data: fileList,
+        },
+        200
+      );
     } catch (error) {
-      return context.json<MRFResponse>({
-        success: false,
-        message: MESSAGES.GET_MRF_LIST_ERROR,
-        error: JSON.stringify(error),
-      }, 500);
+      return context.json<MRFResponse>(
+        {
+          success: false,
+          message: MESSAGES.GET_MRF_LIST_ERROR,
+          error: JSON.stringify(error),
+        },
+        500
+      );
     }
   }
 
@@ -97,11 +112,14 @@ export default class MRFController {
         "Content-Disposition": `attachment; filename="${filename}"`,
       });
     } catch (error) {
-      return context.json<MRFResponse>({
-        success: false,
-        message: MESSAGES.FILE_NOT_FOUND,
-        error: JSON.stringify(error),
-      }, 404);
+      return context.json<MRFResponse>(
+        {
+          success: false,
+          message: MESSAGES.FILE_NOT_FOUND,
+          error: JSON.stringify(error),
+        },
+        404
+      );
     }
   }
 }

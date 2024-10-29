@@ -21,19 +21,17 @@ interface Step1UploadClaimsProps {
 const maxFileSize: number = 1024 * 1024 * 5; // 5MB
 const acceptedMimeTypes: string[] = ["text/csv"];
 
-const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
-  selectedFile,
-  onFileChange,
-  onParsedDataChange,
-  handleNextStep,
-}) => {
+const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({ selectedFile, onFileChange, onParsedDataChange, handleNextStep }) => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const { alertStore } = useStores();
 
-  const onFileAccept = React.useCallback((files: File[]) => {
-    alertStore.reset();
-    onFileChange(files[0]);
-  }, [alertStore, onFileChange]);
+  const onFileAccept = React.useCallback(
+    (files: File[]) => {
+      alertStore.reset();
+      onFileChange(files[0]);
+    },
+    [alertStore, onFileChange]
+  );
 
   const onFileReject = React.useCallback(() => {
     alertStore.showAlert(ALERTS.NOT_CSV_FILE);
@@ -44,7 +42,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
     setLoading(true);
 
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = event => {
       const csvData: string = event.target?.result as string;
 
       Papa.parse(csvData, {
@@ -64,7 +62,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
             return;
           }
 
-          const convertedClaimData: Claim[] = result.data.map((item) => convertToClaim(item));
+          const convertedClaimData: Claim[] = result.data.map(item => convertToClaim(item));
 
           // Zod schema validation
           try {
@@ -77,7 +75,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
             if (error instanceof ZodError) {
               // Extract Zod errors and format them
               const formattedErrors: { [key in keyof Claim]?: string } = {};
-              error.errors.forEach((err) => {
+              error.errors.forEach(err => {
                 formattedErrors[err.path[1] as keyof Claim] = err.message;
               });
 
@@ -102,12 +100,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
 
   return (
     <div className="flex flex-col flex-grow justify-center items-center gap-8 pt-8">
-      <Dropzone
-        onDrop={onFileAccept}
-        onReject={onFileReject}
-        maxSize={maxFileSize}
-        accept={acceptedMimeTypes}
-      >
+      <Dropzone onDrop={onFileAccept} onReject={onFileReject} maxSize={maxFileSize} accept={acceptedMimeTypes}>
         <Group justify="center" gap="xs" className="flex justify-center pointer-events-none w-full md:w-96 min-h-48">
           <Dropzone.Accept>
             <IconFileCheck className="w-16 h-16 text-green-400" />
@@ -115,9 +108,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
           <Dropzone.Reject>
             <IconX className="w-16 h-16 text-red-400" />
           </Dropzone.Reject>
-          <Dropzone.Idle>
-            {selectedFile ? <IconFileCheck className="w-16 h-16 text-green-400" /> : <IconCsv className="w-16 h-16 text-gray-400" />}
-          </Dropzone.Idle>
+          <Dropzone.Idle>{selectedFile ? <IconFileCheck className="w-16 h-16 text-green-400" /> : <IconCsv className="w-16 h-16 text-gray-400" />}</Dropzone.Idle>
 
           <div className="flex flex-col gap-2">
             <Text size="xl" className="text-center">
@@ -131,12 +122,7 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
       </Dropzone>
 
       <Group justify="center">
-        <Button
-          size="md"
-          className="min-w-40"
-          onClick={onFileUpload}
-          disabled={!selectedFile || loading}
-        >
+        <Button size="md" className="min-w-40" onClick={onFileUpload} disabled={!selectedFile || loading}>
           {loading ? <Loader size="sm" /> : "Parse File"}
         </Button>
       </Group>

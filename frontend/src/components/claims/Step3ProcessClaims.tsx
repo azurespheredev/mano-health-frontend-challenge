@@ -26,7 +26,7 @@ const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }) =
       } else {
         alertStore.showAlert({
           ...ALERTS.SERVER_ERROR,
-          title: response.message
+          title: response.message,
         });
       }
     } catch (error) {
@@ -49,7 +49,9 @@ const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }) =
         <div className="flex flex-col justify-center items-center gap-8">
           <IconCircleCheck className="w-20 h-20 text-primary" />
           <Text>{CONTENT.CONVERSION_SUCCESSFUL}</Text>
-          <Button size="md" onClick={() => navigate("/mrf-list")}>{"Go to MRF Page"}</Button>
+          <Button size="md" onClick={() => navigate("/mrf-list")}>
+            {"Go to MRF Page"}
+          </Button>
         </div>
       )}
     </div>

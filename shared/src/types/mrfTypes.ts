@@ -1,4 +1,4 @@
-import type { BillingClass, BillingCodeType, MRFReportStatus, ReportingEntityType, } from "../utils/enums";
+import type { BillingClass, BillingCodeType, MRFReportStatus, ReportingEntityType } from "../utils/enums";
 
 export interface Provider {
   billed_charge: number;

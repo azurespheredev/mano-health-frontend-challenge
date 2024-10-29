@@ -1,6 +1,7 @@
 {
-  "name": "mano-health-frontend-challenge",
+  "name": "@mano/benefits-mrf",
   "private": true,
+  "type": "module",
   "workspaces": [
     "shared"
   ],
@@ -8,14 +9,20 @@
     "prettier": "^3.3.3",
     "zod": "^3.23.8"
   },
-  "devDependencies": {},
   "scripts": {
     "shared:build": "cd shared && npm run build",
-    "frontend:dev": "npm run shared:build && cd ./frontend && npm run dev",
-    "frontend:build": "npm run shared:build && cd ./frontend && npm run build",
-    "frontend:lint": "cd ./frontend && npm run lint",
-    "frontend:preview": "cd ./frontend && npm run preview",
-    "backend:dev": "npm run shared:build && cd ./backend && npm run dev"
+    "shared:lint": "cd shared && npm run lint",
+    "frontend:dev": "npm run shared:build && cd frontend && npm run dev",
+    "frontend:build": "npm run shared:build && cd frontend && npm run build",
+    "frontend:lint": "cd frontend && npm run lint",
+    "frontend:preview": "cd frontend && npm run preview",
+    "backend:dev": "npm run shared:build && cd backend && npm run dev",
+    "backend:lint": "cd backend && npm run lint",
+    "lint": "npm run shared:lint && npm run frontend:lint && npm run backend:lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
-  "author": "Dustin Lee"
+  "author": "Dustin Lee",
+  "devDependencies": {
+    "husky": "^9.1.6"
+  }
 }

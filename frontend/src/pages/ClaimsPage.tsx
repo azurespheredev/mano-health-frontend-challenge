@@ -10,7 +10,7 @@ interface StepConfigType {
   label: string;
   description: string;
   component: React.ReactNode;
-};
+}
 
 const ClaimsPage: React.FC = observer(() => {
   const [activeStep, setActiveStep] = React.useState<number>(0);
@@ -21,38 +21,24 @@ const ClaimsPage: React.FC = observer(() => {
     if (activeStep < stepConfig.length) {
       setActiveStep(activeStep + 1);
     }
-  }
+  };
 
   const handlePrevStep = () => {
     if (activeStep > 0) {
       setActiveStep(activeStep - 1);
     }
-  }
+  };
 
   const stepConfig: StepConfigType[] = [
     {
       label: "Upload",
       description: "Upload CSV File",
-      component: (
-        <Step1UploadClaims
-          selectedFile={selectedFile}
-          onFileChange={setSelectedFile}
-          onParsedDataChange={setParsedData}
-          handleNextStep={handleNextStep}
-        />
-      ),
+      component: <Step1UploadClaims selectedFile={selectedFile} onFileChange={setSelectedFile} onParsedDataChange={setParsedData} handleNextStep={handleNextStep} />,
     },
     {
       label: "Review",
       description: "Revision of Parsed Claims",
-      component: (
-        <Step2ReviewClaims
-          claimsData={parsedData}
-          onChangeClaimsData={setParsedData}
-          handleNextStep={handleNextStep}
-          handlePrevStep={handlePrevStep}
-        />
-      ),
+      component: <Step2ReviewClaims claimsData={parsedData} onChangeClaimsData={setParsedData} handleNextStep={handleNextStep} handlePrevStep={handlePrevStep} />,
     },
   ];
 

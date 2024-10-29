@@ -5,8 +5,8 @@ node_modules
 dist
 lib
 *.local
-*.js
-*.d.ts
+/shared/**/*.js
+/shared/**/*.d.ts
 
 # env
 .env
@@ -17,3 +17,6 @@ lib
 
 # database
 /data/files
+
+# exception
+!eslint.config.js

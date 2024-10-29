@@ -1,19 +1,17 @@
 import { BillingClass, BillingCodeType } from "shared/src/utils/enums";
 
 export function mapClaimTypeToBillingClass(claimType: string): BillingClass {
-  switch (claimType.toLowerCase()) {
-    case "professional":
-      return BillingClass.Professional;
-    case "institutional":
-      return BillingClass.Institutional;
-    default:
-      return BillingClass.Professional;
-  }
+  const billingClass: Record<string, BillingClass> = {
+    professional: BillingClass.Professional,
+    institutional: BillingClass.Institutional,
+  };
+
+  return billingClass[claimType.toLowerCase()];
 }
 
 export const placeOfServiceCodeMapping: { [key: string]: string } = {
-  "Office": "11",
-  "Home": "12",
+  Office: "11",
+  Home: "12",
   "Inpatient Hospital": "21",
   "Outpatient Hospital": "22",
   "Emergency Room - Hospital": "23",
@@ -51,7 +49,7 @@ export function getCurrentTimestamp(): string {
   const seconds = String(now.getSeconds()).padStart(2, "0");
 
   return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
-};
+}
 
 export function parseTimestampString(timestamp: string): Date {
   const [year, month, day, hours, minutes, seconds] = timestamp.split("-").map(Number);

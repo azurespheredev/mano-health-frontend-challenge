@@ -31,19 +31,13 @@ const NoRowsOverlay: React.FC = () => {
   );
 };
 
-const AgGridTable: React.FC<AgGridTableProps> = ({
-  data,
-  onChangeData = () => { },
-  editable = false,
-  isLoading = false,
-  customComponents = {}
-}) => {
+const AgGridTable: React.FC<AgGridTableProps> = ({ data, onChangeData = () => {}, editable = false, isLoading = false, customComponents = {} }) => {
   const [isDeleteModalOpen, { open: openDeleteModal, close: closeDeleteModal }] = useDisclosure(false);
   const [selectedRows, setSelecedRows] = React.useState<TableDataType>([]);
   const { alertStore } = useStores();
 
   const columnDefs = React.useMemo<ColDef<TableRowType>[]>(() => {
-    return Object.keys(data[0] || {}).map((key) => ({
+    return Object.keys(data[0] || {}).map(key => ({
       field: key as keyof TableRowType,
       minWidth: typeof data[0][key as keyof TableRowType] === "string" ? 180 : 128,
       cellRenderer: customComponents[key] || undefined,
@@ -54,8 +48,8 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
     return {
       mode: editable ? "multiRow" : "singleRow",
       groupSelects: "descendants",
-      checkboxes: editable
-    }
+      checkboxes: editable,
+    };
   }, [editable]);
 
   const defaultColDef = React.useMemo<ColDef>(() => {
@@ -73,11 +67,14 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
     return paginationPageSizeSelector[0];
   }, [paginationPageSizeSelector]);
 
-  const onCellValueChanged = React.useCallback((event: CellValueChangedEvent) => {
-    const updatedData = [...data];
-    updatedData[event.rowIndex][event.colDef.field] = event.newValue;
-    onChangeData(updatedData);
-  }, [data, onChangeData]);
+  const onCellValueChanged = React.useCallback(
+    (event: CellValueChangedEvent) => {
+      const updatedData = [...data];
+      updatedData[event.rowIndex][event.colDef.field] = event.newValue;
+      onChangeData(updatedData);
+    },
+    [data, onChangeData]
+  );
 
   const onSelectionChanged = React.useCallback((event: SelectionChangedEvent) => {
     setSelecedRows(event.api.getSelectedRows());
@@ -95,11 +92,7 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
     <div className="flex flex-col gap-4">
       {selectedRows.length > 0 && (
         <div className="flex justify-end">
-          <Button
-            variant="outline"
-            color="red"
-            onClick={openDeleteModal}
-          >
+          <Button variant="outline" color="red" onClick={openDeleteModal}>
             {"Delete Selected Rows"}
           </Button>
         </div>
@@ -124,8 +117,12 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
       <Modal opened={isDeleteModalOpen} onClose={closeDeleteModal}>
         <Text>{CONTENT.DELETE_CONFIRM_QUESTION}</Text>
         <Group justify="right" mt="md">
-          <Button variant="outline" onClick={closeDeleteModal}>{"Cancel"}</Button>
-          <Button color="red" onClick={onDeleteSelectedRows}>{"Delete"}</Button>
+          <Button variant="outline" onClick={closeDeleteModal}>
+            {"Cancel"}
+          </Button>
+          <Button color="red" onClick={onDeleteSelectedRows}>
+            {"Delete"}
+          </Button>
         </Group>
       </Modal>
     </div>

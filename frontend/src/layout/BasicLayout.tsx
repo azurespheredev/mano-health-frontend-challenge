@@ -6,7 +6,10 @@ import { useStores } from "~/stores/useStores";
 import "@mantine/dropzone/styles.css";
 
 const BasicLayout = observer(() => {
-  const { alertStore, alertStore: { alertMessage } } = useStores();
+  const {
+    alertStore,
+    alertStore: { alertMessage },
+  } = useStores();
 
   return (
     <div className="flex flex-col w-full min-h-screen">

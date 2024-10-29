@@ -2,21 +2,14 @@ import type { Claim } from "shared/src/types/claimsTypes";
 import type { AllowedAmounts, OutOfNetworkAllowedAmountFile, OutOfNetworkObject } from "shared/src/types/mrfTypes";
 import { BillingClass, ReportingEntityType } from "shared/src/utils/enums";
 import { ENTITY_NAME } from "~/utils/constants";
-import {
-  getProcedureDescription,
-  mapClaimTypeToBillingClass,
-  mapPlaceOfServiceToServiceCode,
-  mapProcedureCodeToBillingCodeType
-} from "~/utils/helpers";
+import { getProcedureDescription, mapClaimTypeToBillingClass, mapPlaceOfServiceToServiceCode, mapProcedureCodeToBillingCodeType } from "~/utils/helpers";
 
-export function convertClaimsToMRF(
-  claimsData: Claim[]
-): OutOfNetworkAllowedAmountFile {
+export function convertClaimsToMRF(claimsData: Claim[]): OutOfNetworkAllowedAmountFile {
   const outOfNetworkAllowedAmountFile: OutOfNetworkAllowedAmountFile = {
     reporting_entity_name: ENTITY_NAME,
     reporting_entity_type: ReportingEntityType.ThirdParty,
     out_of_network: [],
-    last_updated_on: new Date().toISOString().split('T')[0],
+    last_updated_on: new Date().toISOString().split("T")[0],
     version: "1.0.0",
   };
 

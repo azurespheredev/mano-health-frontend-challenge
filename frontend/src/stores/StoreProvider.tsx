@@ -12,10 +12,12 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }: StoreProviderProps) => (
-  <StoreContext.Provider value={{
-    alertStore,
-    mrfStore,
-  }}>
+  <StoreContext.Provider
+    value={{
+      alertStore,
+      mrfStore,
+    }}
+  >
     {children}
   </StoreContext.Provider>
 );

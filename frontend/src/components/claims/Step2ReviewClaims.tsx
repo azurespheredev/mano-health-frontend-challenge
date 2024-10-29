@@ -13,40 +13,24 @@ interface Step2ReviewClaimsProps {
   handlePrevStep: () => void;
 }
 
-const Step2ReviewClaims: React.FC<Step2ReviewClaimsProps> = ({
-  claimsData,
-  onChangeClaimsData,
-  handleNextStep,
-  handlePrevStep
-}) => {
+const Step2ReviewClaims: React.FC<Step2ReviewClaimsProps> = ({ claimsData, onChangeClaimsData, handleNextStep, handlePrevStep }) => {
   return (
     <div className="flex flex-col flex-grow gap-8 pt-8">
       <div className="flex flex-col gap-4">
         <Text>{CONTENT.REVIEW_PAGE_TITLE}</Text>
-        <Text size="sm" className="whitespace-pre-line">{CONTENT.REVIEW_PAGE_DESCRIPTION}</Text>
+        <Text size="sm" className="whitespace-pre-line">
+          {CONTENT.REVIEW_PAGE_DESCRIPTION}
+        </Text>
       </div>
 
-      <AgGridTable
-        data={claimsData}
-        onChangeData={onChangeClaimsData}
-        editable={true}
-      />
+      <AgGridTable data={claimsData} onChangeData={onChangeClaimsData} editable={true} />
 
       <Group justify="center">
-        <Button
-          size="md"
-          className="min-w-40 mb-4 md:mb-0"
-          onClick={handleNextStep}
-        >
+        <Button size="md" className="min-w-40 mb-4 md:mb-0" onClick={handleNextStep}>
           {"Approve"}
         </Button>
 
-        <Button
-          size="md"
-          color="red"
-          className="min-w-40 mb-4 md:mb-0"
-          onClick={handlePrevStep}
-        >
+        <Button size="md" color="red" className="min-w-40 mb-4 md:mb-0" onClick={handlePrevStep}>
           {"Decline"}
         </Button>
       </Group>

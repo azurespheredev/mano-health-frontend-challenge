@@ -28,13 +28,15 @@ const FileDownload: React.FC<AgGridCellRendererProps> = ({ value }) => {
       console.error(error);
       alertStore.showAlert({
         ...ALERTS.SERVER_ERROR,
-        title: error?.response?.data?.message || ALERTS.SERVER_ERROR.title
+        title: error?.response?.data?.message || ALERTS.SERVER_ERROR.title,
       });
     }
   }, [alertStore, value]);
 
   return (
-    <span className="cursor-pointer underline text-blue-700 hover:text-blue-400" onClick={handleDownload}>{value}</span>
+    <span className="cursor-pointer underline text-blue-700 hover:text-blue-400" onClick={handleDownload}>
+      {value}
+    </span>
   );
 };
 

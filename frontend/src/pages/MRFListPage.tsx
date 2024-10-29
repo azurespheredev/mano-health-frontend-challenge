@@ -41,11 +41,7 @@ const MRFListPage: React.FC = observer(() => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center gap-12 w-full">
-        <Image
-          alt="man-looking-documents-and-smiling"
-          src={"/assets/images/man-looking-documents-and-smiling.jpg"}
-          className="w-80 h-80"
-        />
+        <Image alt="man-looking-documents-and-smiling" src={"/assets/images/man-looking-documents-and-smiling.jpg"} className="w-80 h-80" />
 
         <div className="flex flex-col gap-4 w-full">
           <Text size="xl">{CONTENT.MRF_PAGE_TITLE}</Text>
@@ -69,7 +65,7 @@ const MRFListPage: React.FC = observer(() => {
         isLoading={isLoading}
         customComponents={{
           createdAt: DateParser,
-          filename: FileDownload
+          filename: FileDownload,
         }}
       />
     </div>

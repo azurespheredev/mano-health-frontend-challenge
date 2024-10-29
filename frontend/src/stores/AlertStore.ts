@@ -18,7 +18,7 @@ class AlertStore {
   showAlert = (alertMessage: AlertMessage, message?: string) => {
     this.alertMessage = {
       ...alertMessage,
-      message: `${alertMessage.message} ${message ? `\n${message}` : ""}`
+      message: `${alertMessage.message} ${message ? `\n${message}` : ""}`,
     };
   };
 
