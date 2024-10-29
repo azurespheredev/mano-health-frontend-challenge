@@ -1,7 +1,7 @@
-import type { Claim } from "@shared/types/claimsTypes";
-import type { AllowedAmounts, OutOfNetworkAllowedAmountFile, OutOfNetworkObject } from "@shared/types/mrfTypes";
+import type { Claim } from "shared/src/types/claimsTypes";
+import type { AllowedAmounts, OutOfNetworkAllowedAmountFile, OutOfNetworkObject } from "shared/src/types/mrfTypes";
+import { BillingClass, ReportingEntityType } from "shared/src/utils/enums";
 import { ENTITY_NAME } from "~/utils/constants";
-import { BillingClass, ReportingEntityType } from "@shared/utils/enums";
 import {
   getProcedureDescription,
   mapClaimTypeToBillingClass,

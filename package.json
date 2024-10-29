@@ -1,5 +1,21 @@
 {
+  "name": "mano-health-frontend-challenge",
+  "private": true,
+  "workspaces": [
+    "shared"
+  ],
   "dependencies": {
-    "prettier": "^3.3.3"
-  }
+    "prettier": "^3.3.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "shared:build": "cd shared && npm run build",
+    "frontend:dev": "npm run shared:build && cd ./frontend && npm run dev",
+    "frontend:build": "npm run shared:build && cd ./frontend && npm run build",
+    "frontend:lint": "npm run shared:build && cd ./frontend && npm run lint",
+    "frontend:preview": "npm run shared:build && cd ./frontend && npm run preview",
+    "backend:dev": "npm run shared:build && cd ./backend && npm run dev"
+  },
+  "author": "Dustin Lee"
 }

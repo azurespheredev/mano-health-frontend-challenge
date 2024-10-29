@@ -3,12 +3,12 @@ import type { Context } from "hono";
 import path from "path";
 import { fileURLToPath } from "url";
 import { convertClaimsToMRF } from "~/services/mrfService";
-import type { MRFResponse } from "@shared/types/apiTypes";
-import type { MRFEntity } from "@shared/types/mrfTypes";
+import type { MRFResponse } from "shared/src/types/apiTypes";
+import type { MRFEntity } from "shared/src/types/mrfTypes";
 import { ENTITY_NAME, MESSAGES } from "~/utils/constants";
-import { MRFReportStatus } from "@shared/utils/enums";
+import { MRFReportStatus } from "shared/src/utils/enums";
 import { getCurrentTimestamp, parseTimestampString } from "~/utils/helpers";
-import { claimsArrayValidationSchema } from "~/utils/validations";
+import { claimsArrayValidationSchema } from "shared/src/utils/validations";
 
 // Convert `import.meta.url` to a file path
 const __filename = fileURLToPath(import.meta.url);

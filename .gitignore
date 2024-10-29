@@ -5,6 +5,8 @@ node_modules
 dist
 lib
 *.local
+*.js
+*.d.ts
 
 # env
 .env
@@ -12,3 +14,6 @@ lib
 
 # misc
 .DS_Store
+
+# database
+/data/files

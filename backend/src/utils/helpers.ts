@@ -1,4 +1,4 @@
-import { BillingClass, BillingCodeType } from "@shared/utils/enums";
+import { BillingClass, BillingCodeType } from "shared/src/utils/enums";
 
 export function mapClaimTypeToBillingClass(claimType: string): BillingClass {
   switch (claimType.toLowerCase()) {
