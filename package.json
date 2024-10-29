@@ -10,14 +10,18 @@
     "zod": "^3.23.8"
   },
   "scripts": {
+    "shared:install": "cd shared && npm install",
     "shared:build": "cd shared && npm run build",
     "shared:lint": "cd shared && npm run lint",
+    "frontend:install": "cd frontend && npm install",
     "frontend:dev": "npm run shared:build && cd frontend && npm run dev",
     "frontend:build": "npm run shared:build && cd frontend && npm run build",
     "frontend:lint": "cd frontend && npm run lint",
     "frontend:preview": "cd frontend && npm run preview",
+    "backend:install": "cd backend && npm install",
     "backend:dev": "npm run shared:build && cd backend && npm run dev",
     "backend:lint": "cd backend && npm run lint",
+    "postinstall": "npm run shared:install && npm run frontend:install && npm run backend:install && npm install",
     "lint": "npm run shared:lint && npm run frontend:lint && npm run backend:lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
