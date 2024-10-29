@@ -18,7 +18,7 @@ const Step2ReviewClaims: React.FC<Step2ReviewClaimsProps> = ({
   onChangeClaimsData,
   handleNextStep,
   handlePrevStep
-}: Step2ReviewClaimsProps) => {
+}) => {
   return (
     <div className="flex flex-col flex-grow gap-8 pt-8">
       <div className="flex flex-col gap-4">
@@ -54,4 +54,4 @@ const Step2ReviewClaims: React.FC<Step2ReviewClaimsProps> = ({
   );
 };
 
-export default Step2ReviewClaims;
+export default React.memo(Step2ReviewClaims);

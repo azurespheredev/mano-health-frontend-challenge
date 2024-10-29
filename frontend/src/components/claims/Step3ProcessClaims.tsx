@@ -12,7 +12,7 @@ interface Step3ProcessClaimsProps {
   claimsData: Claim[];
 }
 
-const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }: Step3ProcessClaimsProps) => {
+const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }) => {
   const navigate = useNavigate();
   const { alertStore } = useStores();
   const [isProcessing, setIsProcessing] = React.useState<boolean>(true);
@@ -56,4 +56,4 @@ const Step3ProcessClaims: React.FC<Step3ProcessClaimsProps> = ({ claimsData }: S
   );
 };
 
-export default Step3ProcessClaims;
+export default React.memo(Step3ProcessClaims);

@@ -5,7 +5,7 @@ import { useStores } from "~/stores/useStores";
 import { AgGridCellRendererProps } from "~/types/props";
 import { ALERTS } from "~/utils/constants";
 
-const FileDownload: React.FC<AgGridCellRendererProps> = ({ value }: AgGridCellRendererProps) => {
+const FileDownload: React.FC<AgGridCellRendererProps> = ({ value }) => {
   const { alertStore } = useStores();
 
   const handleDownload = React.useCallback(async () => {
@@ -38,4 +38,4 @@ const FileDownload: React.FC<AgGridCellRendererProps> = ({ value }: AgGridCellRe
   );
 };
 
-export default FileDownload
+export default React.memo(FileDownload);

@@ -144,4 +144,4 @@ const Step1UploadClaims: React.FC<Step1UploadClaimsProps> = ({
   );
 };
 
-export default Step1UploadClaims;
+export default React.memo(Step1UploadClaims);

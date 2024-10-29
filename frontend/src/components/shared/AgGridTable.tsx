@@ -37,7 +37,7 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
   editable = false,
   isLoading = false,
   customComponents = {}
-}: AgGridTableProps) => {
+}) => {
   const [isDeleteModalOpen, { open: openDeleteModal, close: closeDeleteModal }] = useDisclosure(false);
   const [selectedRows, setSelecedRows] = React.useState<TableDataType>([]);
   const { alertStore } = useStores();
@@ -45,8 +45,8 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
   const columnDefs = React.useMemo<ColDef<TableRowType>[]>(() => {
     return Object.keys(data[0] || {}).map((key) => ({
       field: key as keyof TableRowType,
-      minWidth: typeof data[0][key] === "string" ? 180 : 128,
-      cellRenderer: Object.keys(customComponents).includes(key) ? customComponents[key] : undefined,
+      minWidth: typeof data[0][key as keyof TableRowType] === "string" ? 180 : 128,
+      cellRenderer: customComponents[key] || undefined,
     }));
   }, [data, customComponents]);
 
@@ -132,4 +132,4 @@ const AgGridTable: React.FC<AgGridTableProps> = ({
   );
 };
 
-export default AgGridTable;
+export default React.memo(AgGridTable);
